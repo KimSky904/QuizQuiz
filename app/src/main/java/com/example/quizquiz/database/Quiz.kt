@@ -9,15 +9,15 @@ import androidx.room.TypeConverters
 
 class StringListConverter {
     @TypeConverter
-    fun stringListToString(stringList: List<String>) : String {
+    fun stringListToString(stringList: List<String>?) : String? {
         // ["Hello", "World"] => "Hello,World"
-        return stringList.joinToString(",")
+        return stringList?.joinToString(",")
     }
 
     @TypeConverter
-    fun stringToStringList(string: String) : List<String> {
+    fun stringToStringList(string: String?) : List<String>? {
         // "Hello,World" => ["Hello", "World"]
-        return string.split(",")
+        return string?.split(",")
     }
 }
 

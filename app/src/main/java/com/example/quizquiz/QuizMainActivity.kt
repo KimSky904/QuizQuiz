@@ -27,7 +27,7 @@ class QuizMainActivity : AppCompatActivity() {
         db = QuizDatabase.getInstance(this)
 
         val sp = getSharedPreferences("pref", Context.MODE_PRIVATE)
-        if(sp.getBoolean("initialized",false)){
+        if(sp.getBoolean("initialized",true)){
             initQuizDataFromXMLFile()
 
             val editor = sp.edit()
@@ -132,6 +132,7 @@ class QuizMainActivity : AppCompatActivity() {
                     }
                 }
             }
+            Log.d("myapp",quizList.size.toString())
             for(quiz in quizList){
                 db.quizDAO().insert(quiz)
             }
